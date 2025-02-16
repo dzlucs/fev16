@@ -1,0 +1,27 @@
+<div class="drink-list p-10">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <!--ID6  DIRETIVA ESTRUTURAL ngFor PARA GERAR LISTA-->
+    <div *ngFor="let drink of drinks" 
+    class="drink-item bg-white rounded-lg shadow-md overflow-hidden hover:bg-green-200 flex">
+      <!-- Informações à esquerda -->
+      <div class="w-1/2 p-6 flex flex-col text-left justify-between">
+        <div>
+          <!-- Nome do drink -->
+          <h2 class="text-2xl font-bold">{{ drink.name }}</h2>
+          <!-- Preço // ID7. PIPE PARA TRANSFORMAR O PREÇO EM r$--> 
+          <h1 class="text-gray-700 mt-4">{{ drink.price | currency:'BRL'}}</h1>
+        </div>
+        <!-- Botão para adicionar ao carrinho // ID9. event-binding -->
+        <button (click)="addToCart(drink)" class="mt-2 bg-yellow-200 text-black px-4 py-2 rounded-lg
+         hover:bg-orange-200 w-full">
+          🛒 Adicionar
+        </button>
+      </div>
+      <!-- Imagem à direita // ID8. PROPERTY BINDING + INTERPOLATION -->
+      <div class="w-1/2">
+        <img class="w-full h-full object-cover 
+        transform transition duration-300 ease-in-out hover:scale-105" [src]="drink.photo" alt="Foto de {{ drink.name }}">
+      </div>
+    </div>
+  </div>
+</div>
